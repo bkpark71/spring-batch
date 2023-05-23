@@ -1,0 +1,39 @@
+##default
+#spring:
+#  profiles:
+#    active: test
+
+---
+spring:
+  config:
+    active:
+      on-profile: local
+  batch:
+    job:
+      names: ${job.name:NONE}  #job 실행시 job_name을 파라미터로 넘기기 위한 설정임.
+      enabled:  false    # job에 대한 파라미터가 존재하더라도 구동되지 않고, 스케줄링을 활용해서 구동시켜주기 위한 설정
+    jdbc:
+      initialize-schema: ALWAYS
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/spring_batch
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1111
+  jpa:
+    show-sql: true
+
+#---
+#spring:
+#  config:
+#    activate:
+#      on-profile: test
+#  jpa:
+#    database: h2
+#    show-sql: true
+#  batch:
+#    job:
+#      names: ${job.name:NONE}  #job 실행시 job_name을 파라미터로 넘기기 위한 설정임.
+#    jdbc:
+#      initialize-schema: ALWAYS
+#
+
